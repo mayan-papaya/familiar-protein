@@ -5,11 +5,11 @@ var QuestionSchema = new mongoose.Schema({
   qNumber: {type: Number, unique: true},
   title: String,
   description: String,
-  leaderBoard: {
+  leaderBoard: [{
     name: String, 
     solution: String, 
     score: Number
-  },
+  }],
   truthy: [String],
   falsy: [String]
   // examples?
