@@ -23642,11 +23642,25 @@
 	var DetailView = React.createClass({displayName: "DetailView",
 	  mixins: [Navigation],
 
+	  componentDidMount: function() {
+	    window.setInterval(this.updateTime, 1000);
+	  },
+
 	  getInitialState: function(){
 	    return {
 	      result: '',
 	      solved: false,
+	      started: new Date(),
+	      now: new Date()
 	    };
+	  },
+
+	  updateTime: function() {
+	    if (!this.state.solved) {
+	      this.setState({
+	        now: new Date()
+	      });
+	    }
 	  },
 
 	  setRegex: function() {
@@ -23674,6 +23688,17 @@
 	        React.createElement("p", {key: testCase, className: this.checkTestCase(testCase, condition)}, testCase)
 	      )
 	    }.bind(this));
+	  },
+
+	  calculateScore: function() {
+	    var timeElapsed = Math.floor((this.state.now - this.state.started) / 1000);
+	    return this.state.result.length + timeElapsed;
+	  },
+
+	  displayScore: function() {
+	    return React.createElement("div", null, 
+	      "Score: ", this.calculateScore()
+	    );
 	  },
 
 	  returnToMenu: function() {
@@ -23738,6 +23763,8 @@
 
 	        React.createElement("form", {className: "form-inline text-center"}, 
 	          React.createElement("span", {className: "solution"}, "/", React.createElement("textarea", {ref: "solutionText", onChange: this.setRegex, rows: "1", cols: "50", type: "text", className: "regex form-control", placeholder: "Regex solution..."}), "/"), 
+
+	          this.displayScore(), 
 
 	          this.state.solved === null ? React.createElement("p", {className: "error-msg"}, "Please provide valid regular expression") : null, 
 	          this.state.solved ? React.createElement("h3", {className: "success"}, "Success!!! Solved All Test Cases!") : null

@@ -8,11 +8,25 @@ var Link = Router.Link;
 var DetailView = React.createClass({
   mixins: [Navigation],
 
+  componentDidMount: function() {
+    window.setInterval(this.updateTime, 1000);
+  },
+
   getInitialState: function(){
     return {
       result: '',
       solved: false,
+      started: new Date(),
+      now: new Date()
     };
+  },
+
+  updateTime: function() {
+    if (!this.state.solved) {
+      this.setState({
+        now: new Date()
+      });
+    }
   },
 
   setRegex: function() {
@@ -40,6 +54,17 @@ var DetailView = React.createClass({
         <p key={testCase} className={this.checkTestCase(testCase, condition)}>{testCase}</p>
       )
     }.bind(this));
+  },
+
+  calculateScore: function() {
+    var timeElapsed = Math.floor((this.state.now - this.state.started) / 1000);
+    return this.state.result.length + timeElapsed;
+  },
+
+  displayScore: function() {
+    return <div>
+      Score: {this.calculateScore()}
+    </div>;
   },
 
   returnToMenu: function() {
@@ -104,6 +129,8 @@ var DetailView = React.createClass({
 
         <form className="form-inline text-center">
           <span className="solution">/<textarea ref="solutionText" onChange={this.setRegex} rows="1" cols="50" type="text" className="regex form-control" placeholder="Regex solution..."></textarea>/</span>
+
+          {this.displayScore()}
 
           {this.state.solved === null ? <p className="error-msg">Please provide valid regular expression</p> : null}
           {this.state.solved ? <h3 className="success">Success!!! Solved All Test Cases!</h3> : null}
