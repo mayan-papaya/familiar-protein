@@ -86,7 +86,7 @@
 	  render: function() {
 	    return (
 	      React.createElement("div", {className: "container"}, 
-	        React.createElement("h2", {className: "title"}, "Regex Game"), 
+	        React.createElement("h2", {className: "title"}, "Regex Quest 2: Tears of the Ancients"), 
 	        React.createElement(RouteHandler, {questions: this.state.questions})
 	      )
 	    )

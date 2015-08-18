@@ -1,6 +1,6 @@
 # Familiar Protein
 
-## [Regex Game]
+## [Regex Quest 2: Tears of the Ancients]
 
 ### Gamified, online tool for learning regex.
 
@@ -20,11 +20,11 @@ worrying about unecessary complexities. This project aims to bring that ease of 
 to regular expressions. 
 
 ## How
-  [Regex Game] allows users to focus on learning regex through gamification. Users play through
+  [Regex Quest 2: Tears of the Ancients] allows users to focus on learning regex through gamification. Users play through
 an ever expanding set of levels to gain regex mastery, accruing points and ranks along the way.
 
 ## Words
-  "[Regex Game] gives users realistic regex use cases while tracking their progress, enabling
+  "[Regex Quest 2: Tears of the Ancients] gives users realistic regex use cases while tracking their progress, enabling
 a greater learning while ignoring the complexities of modern software projects."
 
   -- Todd Glass, CIO
@@ -32,7 +32,7 @@ a greater learning while ignoring the complexities of modern software projects."
   [link](url)
 
 ## Student
-  "After learning regular expressions with [Regex Game], I write much more elogant and efficient
+  "After learning regular expressions with [Regex Quest 2: Tears of the Ancients], I write much more elogant and efficient
 code"
 
   -- Ricky Mort
