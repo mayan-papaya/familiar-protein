@@ -40,7 +40,7 @@ var App = React.createClass({
   render: function() {
     return (
       <div className="container">
-        <h2 className="title">Regex Game</h2>
+        <h2 className="title">Regex Quest 2: Tears of the Ancients</h2>
         <RouteHandler questions={this.state.questions}/>
       </div>
     )
