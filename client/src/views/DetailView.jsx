@@ -42,6 +42,16 @@ var DetailView = React.createClass({
     }.bind(this));
   },
 
+  calculateScore: function() {
+    return this.state.result.length;
+  },
+
+  displayScore: function() {
+    return <div>
+      Score: {this.calculateScore()}
+    </div>;
+  },
+
   returnToMenu: function() {
     this.setState({
       result: '',
@@ -104,6 +114,8 @@ var DetailView = React.createClass({
 
         <form className="form-inline text-center">
           <span className="solution">/<textarea ref="solutionText" onChange={this.setRegex} rows="1" cols="50" type="text" className="regex form-control" placeholder="Regex solution..."></textarea>/</span>
+
+          {this.displayScore()}
 
           {this.state.solved === null ? <p className="error-msg">Please provide valid regular expression</p> : null}
           {this.state.solved ? <h3 className="success">Success!!! Solved All Test Cases!</h3> : null}
