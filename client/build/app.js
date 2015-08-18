@@ -23642,11 +23642,25 @@
 	var DetailView = React.createClass({displayName: "DetailView",
 	  mixins: [Navigation],
 
+	  componentDidMount: function() {
+	    window.setInterval(this.updateTime, 1000);
+	  },
+
 	  getInitialState: function(){
 	    return {
 	      result: '',
 	      solved: false,
+	      started: new Date(),
+	      now: new Date()
 	    };
+	  },
+
+	  updateTime: function() {
+	    if (!this.state.solved) {
+	      this.setState({
+	        now: new Date()
+	      });
+	    }
 	  },
 
 	  setRegex: function() {
@@ -23677,7 +23691,8 @@
 	  },
 
 	  calculateScore: function() {
-	    return this.state.result.length;
+	    var timeElapsed = Math.floor((this.state.now - this.state.started) / 1000);
+	    return this.state.result.length + timeElapsed;
 	  },
 
 	  displayScore: function() {
