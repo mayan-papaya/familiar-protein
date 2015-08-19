@@ -47,15 +47,10 @@
 	var React = __webpack_require__(1);
 	var $ = __webpack_require__(157);
 
-<<<<<<< HEAD
 	var OverView = __webpack_require__(158);
 	var DetailView = __webpack_require__(198);
-=======
-	var OverView = __webpack_require__(157);
-	var DetailView = __webpack_require__(197);
-	var Signin = __webpack_require__(198)
-	var Signup = __webpack_require__(199)
->>>>>>> 90% complete user auth
+	var Signin = __webpack_require__(199)
+	var Signup = __webpack_require__(200)
 
 	var Router = __webpack_require__(159);
 	var RouteHandler = Router.RouteHandler;
@@ -33017,12 +33012,12 @@
 
 
 /***/ },
-/* 198 */
+/* 199 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 
-	var Router = __webpack_require__(158);
+	var Router = __webpack_require__(159);
 	var Link = Router.Link;
 
 	var OverView = React.createClass({displayName: "OverView",
@@ -33089,12 +33084,12 @@
 	module.exports = OverView;
 
 /***/ },
-/* 199 */
+/* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 
-	var Router = __webpack_require__(158);
+	var Router = __webpack_require__(159);
 	var Link = Router.Link;
 
 	var OverView = React.createClass({displayName: "OverView",
@@ -33104,6 +33099,7 @@
 	    $.ajax({
 	      url: window.location.origin + '/signup',
 	      method: 'POST',
+	      dataType: 'json',
 	      data: JSON.stringify(user),
 	      success: function(data){
 	        console.log(data);
