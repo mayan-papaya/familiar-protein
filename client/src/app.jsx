@@ -34,7 +34,7 @@ var App = React.createClass({
         this.setState({questions: data});
       }.bind(this),
       error: function(xhr, status, err){
-        console.error(xhr, status, err.message);
+        console.log(xhr, status, err.message);
       }
     });
   },
