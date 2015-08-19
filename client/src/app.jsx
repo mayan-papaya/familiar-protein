@@ -1,7 +1,7 @@
 var React = require('react');
 var $ = require('jquery');
 
-var OverView = require('./views/OverView.jsx');
+var OverView = require('./views/Overview.jsx');
 var DetailView = require('./views/DetailView.jsx');
 var Signin = require('./views/Signin.jsx');
 var Signup = require('./views/Signup.jsx');
