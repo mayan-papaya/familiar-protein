@@ -1,4 +1,5 @@
 var React = require('react');
+var $ = require('jquery');
 
 var OverView = require('./views/OverView.jsx');
 var DetailView = require('./views/DetailView.jsx');

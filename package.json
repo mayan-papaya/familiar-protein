@@ -1,25 +1,27 @@
 {
   "name": "familiar-protein",
-  "version": "1.0.0",
-  "description": "",
+  "version": "2.0.0",
+  "description": "Regex: Tears of the Ancients",
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
-    "test": "mocha server/tests/serverSpec.js"
+    "test": "grunt test",
+    "mocha test": "mocha server/tests/serverSpec.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/familiar-protein/familiar-protein.git"
+    "url": "git+https://github.com/mayan-papaya/familiar-protein.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/familiar-protein/familiar-protein/issues"
+    "url": "https://github.com/mayan-papaya/familiar-protein/issues"
   },
-  "homepage": "https://github.com/familiar-protein/familiar-protein#readme",
+  "homepage": "https://github.com/mayan-papaya/familiar-protein#readme",
   "dependencies": {
     "body-parser": "^1.13.3",
     "express": "^4.13.3",
+    "grunt": "^0.4.5",
     "jwt-simple": "^0.3.0",
     "mongoose": "^4.1.1",
     "q": "^1.4.1",
@@ -28,8 +30,18 @@
   },
   "devDependencies": {
     "chai": "^3.2.0",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-karma": "^0.12.0",
+    "grunt-mocha-test": "^0.12.7",
     "jsx-loader": "^0.13.2",
+    "karma": "^0.13.9",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-firefox-launcher": "^0.1.6",
+    "karma-mocha": "^0.2.0",
+    "karma-phantomjs-launcher": "^0.2.1",
     "mocha": "^2.2.5",
+    "phantomjs": "^1.9.17",
+    "phantomjs-polyfill": "0.0.1",
     "supertest": "^1.0.1"
   }
 }

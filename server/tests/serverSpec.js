@@ -1,3 +1,4 @@
+/*
 var request = require('supertest');
 var express = require('express');
 var expect = require('chai').expect;
@@ -7,7 +8,7 @@ process.env.TESTING_DB = 'mongodb://localhost/regextesting';
 var app = require('../server');
 var Question = require('../questions/questionModel');
 
-//describe('Server', function() {
+describe('Server', function() {
 
-
-//});
+});
+*/

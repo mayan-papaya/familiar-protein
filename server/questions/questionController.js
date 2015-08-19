@@ -7,7 +7,7 @@ var add = function(req, res, next) {
     qNumber: req.body.qNumber,
     title: req.body.title,
     description: req.body.description
-  }
+  };
 
   var newQ = new Question(question);
   newQ.save(function(err, newEntry) {
@@ -58,7 +58,7 @@ var runTests = function(req, res, next) {
   var result = questionValidation(regexString, req.questionData.truthy, req.questionData.falsy);
 
   res.status(201);
-  res.send({result: result})
+  res.send({result: result});
 };
 
 module.exports = {
