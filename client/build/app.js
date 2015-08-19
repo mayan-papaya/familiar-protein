@@ -32960,7 +32960,6 @@
 	      this.transitionTo('/');
 	    }
 
-
 	    // makes sure that the questions are loaded from the database before rendering the view
 	    try {
 	      question.title;
@@ -32982,7 +32981,15 @@
 	        ), 
 
 	        React.createElement("form", {className: "form-inline text-center"}, 
-	          React.createElement("span", {className: "solution"}, "/", React.createElement("textarea", {ref: "solutionText", onChange: this.setRegex, rows: "1", cols: "50", type: "text", className: "regex form-control", placeholder: "Regex solution..."}), "/"), 
+
+	          React.createElement("span", {className: "solution"}, 
+	            React.createElement("span", null, "/"), 
+	            React.createElement("input", {ref: "solutionText", 
+	              onChange: this.setRegex, rows: "1", cols: "50", type: "text", 
+	              className: "regex form-control", 
+	              placeholder: "Regex solution..."}), 
+	            React.createElement("span", null, "/")
+	          ), 
 
 	          this.displayScore(), 
 

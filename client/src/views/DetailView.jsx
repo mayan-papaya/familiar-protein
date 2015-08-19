@@ -106,7 +106,6 @@ var DetailView = React.createClass({
       this.transitionTo('/');
     }
 
-
     // makes sure that the questions are loaded from the database before rendering the view
     try {
       question.title;
@@ -128,7 +127,15 @@ var DetailView = React.createClass({
         </div>
 
         <form className="form-inline text-center">
-          <span className="solution">/<textarea ref="solutionText" onChange={this.setRegex} rows="1" cols="50" type="text" className="regex form-control" placeholder="Regex solution..."></textarea>/</span>
+
+          <span className="solution">
+            <span>/</span>
+            <input ref="solutionText"
+              onChange={this.setRegex} rows="1" cols="50" type="text"
+              className="regex form-control"
+              placeholder="Regex solution..."/>
+            <span>/</span>
+          </span>
 
           {this.displayScore()}
 
