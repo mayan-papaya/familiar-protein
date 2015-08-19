@@ -3,6 +3,8 @@ var $ = require('jquery');
 
 var OverView = require('./views/OverView.jsx');
 var DetailView = require('./views/DetailView.jsx');
+var Signin = require('./views/Signin.jsx')
+var Signup = require('./views/Signup.jsx')
 
 var Router = require('react-router');
 var RouteHandler = Router.RouteHandler;
@@ -51,12 +53,13 @@ var App = React.createClass({
 
 var routes = (
   <Route name="app" path="/" handler={App}>
-    <Route name="question" path="/:qNumber" handler={DetailView}/>
-    <DefaultRoute name="default" handler={OverView} />
+    <Route name="question" path="/questions/:qNumber" handler={DetailView}/>
+    <DefaultRoute name="signin" handler={Signin} />
+    <Route name="signup" handler={Signup} />
+    <Route name="default" handler={OverView} />
   </Route>
 );
 
 Router.run(routes, function(Root){
   React.render(<Root />, document.body);
 });
-
