@@ -47,8 +47,15 @@
 	var React = __webpack_require__(1);
 	var $ = __webpack_require__(157);
 
+<<<<<<< HEAD
 	var OverView = __webpack_require__(158);
 	var DetailView = __webpack_require__(198);
+=======
+	var OverView = __webpack_require__(157);
+	var DetailView = __webpack_require__(197);
+	var Signin = __webpack_require__(198)
+	var Signup = __webpack_require__(199)
+>>>>>>> 90% complete user auth
 
 	var Router = __webpack_require__(159);
 	var RouteHandler = Router.RouteHandler;
@@ -97,15 +104,16 @@
 
 	var routes = (
 	  React.createElement(Route, {name: "app", path: "/", handler: App}, 
-	    React.createElement(Route, {name: "question", path: "/:qNumber", handler: DetailView}), 
-	    React.createElement(DefaultRoute, {name: "default", handler: OverView})
+	    React.createElement(Route, {name: "question", path: "/questions/:qNumber", handler: DetailView}), 
+	    React.createElement(DefaultRoute, {name: "signin", handler: Signin}), 
+	    React.createElement(Route, {name: "signup", handler: Signup}), 
+	    React.createElement(Route, {name: "default", handler: OverView})
 	  )
 	);
 
 	Router.run(routes, function(Root){
 	  React.render(React.createElement(Root, null), document.body);
 	});
-
 
 
 /***/ },
@@ -33007,6 +33015,151 @@
 
 	module.exports = DetailView;
 
+
+/***/ },
+/* 198 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+
+	var Router = __webpack_require__(158);
+	var Link = Router.Link;
+
+	var OverView = React.createClass({displayName: "OverView",
+
+	  signin: function(user){
+	    $.ajax({
+	      url: window.location.origin + '/signin',
+	      method: 'POST',
+	      dataType: 'json',
+	      data: user,
+	      success: function(data){
+	        console.log(data);
+	      }.bind(this),
+	      error: function(xhr, status, err){
+	        console.error(xhr, status, err.message);
+	      }
+	    });
+	  },
+
+	  handleSubmit: function(){
+	    var name = React.findDOMNode(this.refs.name).value;
+	    var password = React.findDOMNode(this.refs.password).value;
+	    var user = {
+	      username: name,
+	      password: password
+	    }
+	    this.signin(user);
+	  },
+
+	  render: function() { 
+	    return (
+	      React.createElement("div", null, 
+	        React.createElement("div", {class: "row"}, 
+	          React.createElement("div", {class: "col-md-8 col-md-offset-2"}, 
+	            React.createElement("div", null, 
+	              React.createElement("h3", null, "Sign In")
+	            ), 
+	            React.createElement("div", {class: "row col-md-4 signin-margin"}, 
+	              React.createElement("form", {onSubmit: this.handleSubmit}, 
+	              React.createElement("input", {type: "text", class: "form-control input-md", required: true, ref: "name", class: "text", placeholder: "Username"}), 
+	              React.createElement("div", null), 
+	              React.createElement("input", {type: "password", class: "form-control input-md", required: true, ref: "password", class: "text", placeholder: "Password"}), 
+	              React.createElement("input", {type: "submit", class: "btn btn-primary", value: "Submit"})
+	              )
+	            ), 
+	            React.createElement("br", null), 
+	            React.createElement("div", {class: "row"}, 
+	              React.createElement("div", {class: "col-md-4"}, 
+	                "Need new account?"
+	              )
+	            ), 
+	            React.createElement("div", {class: "row"}, 
+	              React.createElement("div", {class: "col-md-4"}, 
+	              React.createElement("td", null, React.createElement(Link, {to: "signup", className: "btn btn-primary"}, "Signup"))
+	              )
+	            )
+	          )
+	        )
+	      )
+	    )
+	  }
+	});
+
+	module.exports = OverView;
+
+/***/ },
+/* 199 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+
+	var Router = __webpack_require__(158);
+	var Link = Router.Link;
+
+	var OverView = React.createClass({displayName: "OverView",
+
+	  signup: function(user){
+	    console.log('gggggg', user)
+	    $.ajax({
+	      url: window.location.origin + '/signup',
+	      method: 'POST',
+	      data: JSON.stringify(user),
+	      success: function(data){
+	        console.log(data);
+	      }.bind(this),
+	      error: function(xhr, status, err){
+	        console.error(xhr, status, err.message);
+	      }
+	    });
+	  },
+
+	  handleSubmit: function(){
+	    var name = React.findDOMNode(this.refs.name).value;
+	    var password = React.findDOMNode(this.refs.password).value;
+	    var user = {
+	      username: name,
+	      password: password
+	    }
+	    this.signup(user);
+	  },
+
+	  render: function() { 
+	    return (
+	      React.createElement("div", null, 
+	        React.createElement("div", {class: "row"}, 
+	          React.createElement("div", {class: "col-md-8 col-md-offset-2"}, 
+	            React.createElement("div", null, 
+	              React.createElement("h3", null, "Sign Up")
+	            ), 
+	            React.createElement("div", {class: "row col-md-4 signup-margin"}, 
+	              React.createElement("form", {onSubmit: this.handleSubmit}, 
+	              React.createElement("input", {type: "text", class: "form-control input-md", required: true, ref: "name", class: "text", placeholder: "Username"}), 
+	              React.createElement("div", null), 
+	              React.createElement("input", {type: "password", class: "form-control input-md", required: true, ref: "password", class: "text", placeholder: "Password"}), 
+	              React.createElement("input", {type: "password", class: "form-control input-md", required: true, class: "text", placeholder: "Confirm Password"}), 
+	              React.createElement("input", {type: "submit", class: "btn btn-primary", value: "Submit"})
+	              )
+	            ), 
+	            React.createElement("br", null), 
+	            React.createElement("div", {class: "row"}, 
+	              React.createElement("div", {class: "col-md-4"}, 
+	                "Already have an account?"
+	              )
+	            ), 
+	            React.createElement("div", {class: "row"}, 
+	              React.createElement("div", {class: "col-md-4"}, 
+	                React.createElement("td", null, React.createElement(Link, {to: "signin", className: "btn btn-primary"}, "Signin"))
+	              )
+	            )
+	          )
+	        )
+	      )
+	    )
+	  }
+	});
+
+	module.exports = OverView;
 
 /***/ }
 /******/ ]);
