@@ -56,6 +56,25 @@ module.exports = function(grunt) {
       unit: {
         configFile: 'karma.conf.js'
       }
+    },
+    webpack: {
+      client: {
+        entry: "./client/src/app.jsx",
+        output: {
+            path: "client/build",
+            filename: "app.js"
+        },
+        module: {
+            loaders: [
+                { test: /\.jsx$/, loader: "jsx-loader" }
+            ]
+        }
+      }
+    },
+    execute: {
+      target: {
+        src: ['server/server.js']
+      }
     }
     // watch: {
     //   files: ['<%= jshint.files %>'],
@@ -66,8 +85,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   // grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-karma');
+  grunt.loadNpmTasks('grunt-webpack');
+  grunt.loadNpmTasks('grunt-execute');
   
-  grunt.registerTask('test', ['jshint', 'karma']);
-  grunt.registerTask('default', ['test']);
+  grunt.registerTask('test', ['jshint', 'webpack', 'karma']);
+  grunt.registerTask('default', ['webpack', 'execute']);
 
 };

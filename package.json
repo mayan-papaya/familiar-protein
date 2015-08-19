@@ -4,7 +4,7 @@
   "description": "Regex: Tears of the Ancients",
   "main": "server/server.js",
   "scripts": {
-    "start": "node server/server.js",
+    "start": "grunt",
     "test": "grunt test",
     "mocha test": "mocha server/tests/serverSpec.js"
   },
@@ -22,12 +22,16 @@
     "body-parser": "^1.13.3",
     "express": "^4.13.3",
     "grunt": "^0.4.5",
+    "grunt-execute": "^0.2.2",
+    "grunt-webpack": "^1.0.11",
     "jquery": "^2.1.4",
     "jwt-simple": "^0.3.0",
     "mongoose": "^4.1.1",
     "q": "^1.4.1",
     "react": "^0.13.3",
-    "react-router": "^0.13.3"
+    "react-router": "^0.13.3",
+    "webpack": "^1.11.0",
+    "webpack-dev-server": "^1.10.1"
   },
   "devDependencies": {
     "chai": "^3.2.0",
