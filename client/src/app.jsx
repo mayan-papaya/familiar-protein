@@ -54,9 +54,9 @@ var App = React.createClass({
 var routes = (
   <Route name="app" path="/" handler={App}>
     <Route name="question" path="/questions/:qNumber" handler={DetailView}/>
-    <DefaultRoute name="signin" handler={Signin} />
+    <Route name="signin" handler={Signin} />
     <Route name="signup" handler={Signup} />
-    <Route name="default" handler={OverView} />
+    <DefaultRoute name="default" handler={OverView} />
   </Route>
 );
 
