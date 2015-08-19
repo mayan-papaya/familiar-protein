@@ -3,8 +3,9 @@ var $ = require('jquery');
 
 var OverView = require('./views/OverView.jsx');
 var DetailView = require('./views/DetailView.jsx');
-var Signin = require('./views/Signin.jsx')
-var Signup = require('./views/Signup.jsx')
+var Signin = require('./views/Signin.jsx');
+var Signup = require('./views/Signup.jsx');
+var ProfileView = require('./views/ProfileView.jsx')
 
 var Router = require('react-router');
 var RouteHandler = Router.RouteHandler;
@@ -56,6 +57,7 @@ var routes = (
     <Route name="question" path="/questions/:qNumber" handler={DetailView}/>
     <Route name="signin" handler={Signin} />
     <Route name="signup" handler={Signup} />
+    <Route name="profileView" handler={ProfileView} />
     <DefaultRoute name="default" handler={OverView} />
   </Route>
 );
