@@ -4,14 +4,14 @@ var $ = require('jquery');
 var Router = require('react-router');
 var Link = Router.Link;
 
-var OverView = React.createClass({
+var Signin = React.createClass({
 
   signin: function(user){
     $.ajax({
-      url: window.location.origin + '/signin',
+      url: window.location.origin + '/signin', // signin route
       method: 'POST',
       dataType: 'json',
-      data: user,
+      data: user, // data is user
       success: function(data){
         console.log(data);
       }.bind(this),
@@ -63,4 +63,4 @@ var OverView = React.createClass({
   }
 });
 
-module.exports = OverView;
+module.exports = Signin;

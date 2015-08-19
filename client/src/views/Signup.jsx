@@ -4,15 +4,15 @@ var $ = require('jquery');
 var Router = require('react-router');
 var Link = Router.Link;
 
-var OverView = React.createClass({
+var Signup = React.createClass({
 
   signup: function(user){
-    console.log('gggggg', user)
+    console.log('This should be a user obj:', user);
     $.ajax({
-      url: window.location.origin + '/signup',
+      url: window.location.origin + '/signup', //signup route
       method: 'POST',
       dataType: 'json',
-      data: JSON.stringify(user),
+      data: JSON.stringify(user), //data is stringified user obj
       success: function(data){
         console.log(data);
       }.bind(this),
@@ -65,4 +65,4 @@ var OverView = React.createClass({
   }
 });
 
-module.exports = OverView;
+module.exports = Signup;
