@@ -5,6 +5,24 @@ var User = require('./userModel.js'),
 var secret = 'shhhhh';
 
 module.exports = {
+
+
+  getUser: function(req, res){
+    console.log(req.body);
+    var username = req.body.username;
+    var findUser = Q.nbind(User.findOne, User);
+    if(!username) {
+      res.sendStatus(401);
+    }
+    findUser({username: username})
+      .then(function(user) {
+        console.log(user);
+        res.json(JSON.stringify(user));
+      });
+  },
+
+
+
   signin: function (req, res) {
     var username = req.body.username,
         password = req.body.password;
