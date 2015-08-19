@@ -23694,9 +23694,30 @@
 	    }.bind(this));
 	  },
 
+	  calculateTime: function() {
+	    var t = Math.floor((this.state.now - this.state.started) / 1000);
+	    var sec = t % 60;
+	    if(sec.toString().length < 2) {
+	      sec = '0' + sec;
+	    }
+	    var min = Math.floor(t / 60);
+	    return min + ':' + sec;
+	  },
+
+	  displayTimer: function() {
+	    return React.createElement("div", null, 
+	      this.calculateTime()
+	    );
+	  },
+
 	  calculateScore: function() {
-	    var timeElapsed = Math.floor((this.state.now - this.state.started) / 1000);
-	    return this.state.result.length + timeElapsed;
+	    var sec = Math.floor((this.state.now - this.state.started) / 1000);
+	    var strLength = this.state.result.length;
+	    var score = 1000 - ((strLength + 1) * 5) - Math.floor(sec);
+	    if(score < 0) {
+	      score = 0;
+	    }
+	    return score;
 	  },
 
 	  displayScore: function() {
@@ -23766,6 +23787,8 @@
 
 	        React.createElement("form", {className: "form-inline text-center"}, 
 
+	          this.displayTimer(), 
+
 	          React.createElement("span", {className: "solution"}, 
 	            React.createElement("span", null, "/"), 
 	            React.createElement("input", {ref: "solutionText", 
@@ -23775,7 +23798,7 @@
 	            React.createElement("span", null, "/")
 	          ), 
 
-	          this.displayScore(), 
+	          this.state.solved ? this.displayScore() : null, 
 
 	          this.state.solved === null ? React.createElement("p", {className: "error-msg"}, "Please provide valid regular expression") : null, 
 	          this.state.solved ? React.createElement("h3", {className: "success"}, "Success!!! Solved All Test Cases!") : null

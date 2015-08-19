@@ -56,9 +56,30 @@ var DetailView = React.createClass({
     }.bind(this));
   },
 
+  calculateTime: function() {
+    var t = Math.floor((this.state.now - this.state.started) / 1000);
+    var sec = t % 60;
+    if(sec.toString().length < 2) {
+      sec = '0' + sec;
+    }
+    var min = Math.floor(t / 60);
+    return min + ':' + sec;
+  },
+
+  displayTimer: function() {
+    return <div>
+      {this.calculateTime()}
+    </div>;
+  },
+
   calculateScore: function() {
-    var timeElapsed = Math.floor((this.state.now - this.state.started) / 1000);
-    return this.state.result.length + timeElapsed;
+    var sec = Math.floor((this.state.now - this.state.started) / 1000);
+    var strLength = this.state.result.length;
+    var score = 1000 - ((strLength + 1) * 5) - Math.floor(sec);
+    if(score < 0) {
+      score = 0;
+    }
+    return score;
   },
 
   displayScore: function() {
@@ -128,6 +149,8 @@ var DetailView = React.createClass({
 
         <form className="form-inline text-center">
 
+          {this.displayTimer()}
+
           <span className="solution">
             <span>/</span>
             <input ref="solutionText"
@@ -137,7 +160,7 @@ var DetailView = React.createClass({
             <span>/</span>
           </span>
 
-          {this.displayScore()}
+          {this.state.solved ? this.displayScore() : null}
 
           {this.state.solved === null ? <p className="error-msg">Please provide valid regular expression</p> : null}
           {this.state.solved ? <h3 className="success">Success!!! Solved All Test Cases!</h3> : null}
