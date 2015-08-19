@@ -72,4 +72,4 @@ module.exports = {
         res.json({error: 'Server error'});
       });
   }
-}
+};
