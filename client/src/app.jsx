@@ -1,5 +1,7 @@
 var React = require('react');
+
 var $ = require('jquery');
+require('bootstrap-webpack');
 
 var OverView = require('./views/Overview.jsx');
 var DetailView = require('./views/DetailView.jsx');
