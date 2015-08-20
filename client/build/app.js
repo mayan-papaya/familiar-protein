@@ -49,11 +49,11 @@
 	var $ = __webpack_require__(226);
 	__webpack_require__(227);
 
-	var OverView = __webpack_require__(292);
+	var OverView = __webpack_require__(249);
 	var DetailView = __webpack_require__(289);
 	var Signin = __webpack_require__(290);
 	var Signup = __webpack_require__(291);
-	var ProfileView = __webpack_require__(293)
+	var ProfileView = __webpack_require__(292)
 
 	var Router = __webpack_require__(250);
 	var RouteHandler = Router.RouteHandler;
@@ -32321,7 +32321,42 @@
 
 
 /***/ },
-/* 249 */,
+/* 249 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(70);
+
+	var Router = __webpack_require__(250);
+	var Link = Router.Link;
+
+	var OverView = React.createClass({displayName: "OverView",
+	  render: function() {
+	    var questions = this.props.questions.map(function(question) {
+	      return (
+	        React.createElement("tr", {key: question.qNumber, className: "question"}, 
+	          React.createElement("td", null, React.createElement("b", null, question.title)), 
+	          React.createElement("td", null, React.createElement("p", null, question.description)), 
+	          React.createElement("td", null, React.createElement(Link, {to: "question", params: {qNumber:question.qNumber}, className: "btn btn-primary"}, "Solve"))
+	        )
+	      )
+	    });
+
+	    return (
+	      React.createElement("div", null, 
+	        React.createElement("table", {className: "questionContainer table table-hover"}, 
+	          React.createElement("tbody", null, 
+	            questions
+	          )
+	        )
+	      )
+	    );
+	  }
+	});
+
+	module.exports = OverView;
+
+
+/***/ },
 /* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -35522,7 +35557,7 @@
 
 	  displayScore: function() {
 	    return React.createElement("div", null, 
-	      "Score: ", this.calculateScore()
+	      "Your mutherfuckin score: ", this.calculateScore()
 	    );
 	  },
 
@@ -35773,42 +35808,6 @@
 
 /***/ },
 /* 292 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(70);
-
-	var Router = __webpack_require__(250);
-	var Link = Router.Link;
-
-	var OverView = React.createClass({displayName: "OverView",
-	  render: function() {
-	    var questions = this.props.questions.map(function(question) {
-	      return (
-	        React.createElement("tr", {key: question.qNumber, className: "question"}, 
-	          React.createElement("td", null, React.createElement("b", null, question.title)), 
-	          React.createElement("td", null, React.createElement("p", null, question.description)), 
-	          React.createElement("td", null, React.createElement(Link, {to: "question", params: {qNumber:question.qNumber}, className: "btn btn-primary"}, "Solve"))
-	        )
-	      )
-	    });
-
-	    return (
-	      React.createElement("div", null, 
-	        React.createElement("table", {className: "questionContainer table table-hover"}, 
-	          React.createElement("tbody", null, 
-	            questions
-	          )
-	        )
-	      )
-	    );
-	  }
-	});
-
-	module.exports = OverView;
-
-
-/***/ },
-/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(70);
