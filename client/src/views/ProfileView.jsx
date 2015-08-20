@@ -1,17 +1,22 @@
 var React = require('react');
 
 var Router = require('react-router');
+var $ = require('jquery');
 var Link = Router.Link;
 
 var ProfileView = React.createClass({
 
   getUser: function(username){
+    var user = {
+      username: username
+    }
+    console.log(user);
     var that = this;
     $.ajax({
       url: window.location.origin + '/profile',
-      method: 'GET',
-      dataType: 'json',
-      data: JSON.stringify(username),
+      type: 'POST',
+      data: JSON.stringify(user),
+      contentType: 'application/json',
       success: function(data){
         console.log(data);
         that.user = data.user;
@@ -23,6 +28,9 @@ var ProfileView = React.createClass({
   },
 
   render: function() {
+    this.getUser(function(){
+      return window.localStorage.getItem('com.TearsOfTheAncients.username');
+    }());
     var questions = this.user.questions.map(function(question) {
       return (
         <tr className="question">

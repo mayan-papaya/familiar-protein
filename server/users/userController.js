@@ -8,7 +8,7 @@ module.exports = {
 
 
   getUser: function(req, res){
-    console.log(req.body);
+    console.log('asdfasdfsadf', req.body);
     var username = req.body.username;
     var findUser = Q.nbind(User.findOne, User);
     if(!username) {
