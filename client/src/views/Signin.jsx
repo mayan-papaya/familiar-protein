@@ -15,7 +15,6 @@ var Signin = React.createClass({
       success: function(token){
         window.localStorage.setItem('com.TearsOfTheAncients', token);
         window.localStorage.setItem('com.TearsOfTheAncients.username', user.username);
-        console.log('THIS IS IT', window.localStorage.getItem('com.TearsOfTheAncients'));
       }.bind(this),
       error: function(xhr, status, err){
         console.error(xhr, status, err.message);

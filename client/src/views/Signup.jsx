@@ -13,7 +13,8 @@ var Signup = React.createClass({
       data: JSON.stringify(user), //data is stringified user obj
       contentType: 'application/json',
       success: function(data){
-
+        window.localStorage.setItem('com.TearsOfTheAncients', token);
+        window.localStorage.setItem('com.TearsOfTheAncients.username', user.username);
       }.bind(this),
       error: function(xhr, status, err){
         console.error(xhr, status, err.message);
