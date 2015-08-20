@@ -1,5 +1,10 @@
-body { 
-  padding: 30px 0 50px 0; 
+/*for testing*/
+* {
+  /*border: 1px dotted green;*/
+}
+
+body {
+  padding: 30px 0 50px 0;
 }
 
 .back {

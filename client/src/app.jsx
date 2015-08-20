@@ -13,6 +13,7 @@ var Router = require('react-router');
 var RouteHandler = Router.RouteHandler;
 var DefaultRoute = Router.DefaultRoute;
 var Route = Router.Route;
+var Link = Router.Link;
 
 
 var App = React.createClass({
@@ -46,10 +47,17 @@ var App = React.createClass({
   render: function() {
     return (
       <div className="container">
+
+        <div className="row">
+          <div className="col-md-2 col-md-offset-10 text-right">
+            <Link to="profileView">Profile</Link>
+          </div>
+        </div>
+
         <h2 className="title">Regex Quest 2: Tears of the Ancients</h2>
         <RouteHandler questions={this.state.questions}/>
       </div>
-    )
+    );
   }
 
 });
