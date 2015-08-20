@@ -86,15 +86,20 @@ module.exports = function(grunt) {
       target: {
         src: ['server/server.js']
       }
-    }
+    },
     // watch: {
-    //   files: ['<%= jshint.files %>'],
-    //   tasks: ['jshint']
+      // scripts: {
+        // files: ['<%= webpack.files %>'],
+        // tasks: ['webpack', 'execute'],
+        // options: {
+        //   spawn: false
+        // }
+      // }
     // }
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  // grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-webpack');
   grunt.loadNpmTasks('grunt-execute');
