@@ -1,7 +1,6 @@
 var React = require('react');
 
 var Router = require('react-router');
-var $ = require('jquery');
 var Link = Router.Link;
 
 var ProfileView = React.createClass({
