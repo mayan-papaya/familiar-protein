@@ -8,6 +8,7 @@ var DetailView = require('./views/DetailView.jsx');
 var Signin = require('./views/Signin.jsx');
 var Signup = require('./views/Signup.jsx');
 var ProfileView = require('./views/ProfileView.jsx')
+var Leaderboard = require('./views/Leaderboard.jsx')
 
 var Router = require('react-router');
 var RouteHandler = Router.RouteHandler;
@@ -74,6 +75,12 @@ var App = React.createClass({
           </div>
         </div>
 
+        <div className="row">
+          <div className="col-md-2 col-md-offset-10 text-right">
+            <Link to="default">Problems</Link>
+          </div>
+        </div>
+
         <h2 className="title">Regex Quest 2: Tears of the Ancients</h2>
         <RouteHandler profile={this.state.profile} questions={this.state.questions} />
       </div>
@@ -85,6 +92,7 @@ var App = React.createClass({
 var routes = (
   <Route name="app" path="/" handler={App}>
     <Route name="question" path="/questions/:qNumber" handler={DetailView}/>
+    <Route name="leaderboard" handler={Leaderboard} />
     <Route name="signin" handler={Signin} />
     <Route name="signup" handler={Signup} />
     <Route name="profileView" handler={ProfileView} />

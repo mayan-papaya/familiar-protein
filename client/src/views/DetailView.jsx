@@ -164,6 +164,12 @@ var DetailView = React.createClass({
 
           {this.state.solved === null ? <p className="error-msg">Please provide valid regular expression</p> : null}
           {this.state.solved ? <h3 className="success">Success!!! Solved All Test Cases!</h3> : null}
+
+          {this.state.solved ?
+            <div className="text-center">
+              <Link to="leaderboard">Leaderboard</Link>
+            </div> : null}
+
         </form>
 
         <div className="test-cases">
