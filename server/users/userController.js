@@ -58,12 +58,12 @@ module.exports = {
         password  = req.body.password,
         create,
         newUser;
-        console.log('++++++++++', req.body); // req.body is empty
+        console.log('++++++++++', req); // req.body is empty
     var findOne = Q.nbind(User.findOne, User);
     // check to see if user already exists
     findOne({username: username})
       .then(function(user) {
-        console.log('^^^^^^^^^^^', user);
+        console.log('User object here: ', user);
         if (user) {
           res.statusCode = 403;
           res.json({error: 'Username taken'});
@@ -74,12 +74,12 @@ module.exports = {
             username: username,
             password: password
           };
-          console.log('``````````', newUser);
+          console.log('New user object here: ', newUser);
           return create(newUser);
         }
       })
       .then(function (user) {
-        console.log('got here: then', user);
+        console.log('Got to the then statement in userController:', user);
         // create token to send back for auth
         var token = jwt.encode(user, secret);
         res.json({token: token});
