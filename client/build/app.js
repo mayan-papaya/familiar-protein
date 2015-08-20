@@ -35557,7 +35557,7 @@
 
 	  displayScore: function() {
 	    return React.createElement("div", null, 
-	      "Your mutherfuckin score: ", this.calculateScore()
+	      "Score: ", this.calculateScore()
 	    );
 	  },
 
