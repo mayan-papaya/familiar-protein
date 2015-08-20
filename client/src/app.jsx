@@ -40,7 +40,27 @@ var App = React.createClass({
     });
   },
 
+  getUser: function(){
+    var user = {
+      username: window.localStorage.getItem('com.TearsOfTheAncients.username')
+    }
+    console.log(user);
+    $.ajax({
+      url: window.location.origin + '/profile',
+      type: 'POST',
+      data: JSON.stringify(user),
+      contentType: 'application/json',
+      success: function(data){
+        this.setState({profile: JSON.parse(data)});
+      }.bind(this),
+      error: function(xhr, status, err){
+        console.error(xhr, status, err.message);
+      }
+    });
+  },
+
   componentDidMount: function(){
+    this.getUser();
     this.loadAllQuestions();
   },
 
@@ -55,7 +75,7 @@ var App = React.createClass({
         </div>
 
         <h2 className="title">Regex Quest 2: Tears of the Ancients</h2>
-        <RouteHandler questions={this.state.questions}/>
+        <RouteHandler profile={this.state.profile} questions={this.state.questions} />
       </div>
     );
   }
