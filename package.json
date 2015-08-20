@@ -4,8 +4,8 @@
   "description": "Regex: Tears of the Ancients",
   "main": "server/server.js",
   "scripts": {
-    "start": "grunt",
-    "test": "grunt test",
+    "start": "node node_modules/grunt-cli/bin/grunt",
+    "test": "node node_modules/grunt-cli/bin/grunt test",
     "mocha test": "mocha server/tests/serverSpec.js"
   },
   "repository": {
