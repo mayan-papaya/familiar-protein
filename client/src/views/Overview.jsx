@@ -12,7 +12,7 @@ var OverView = React.createClass({
           <td><p>{question.description}</p></td>
           <td><Link to="question" params={{qNumber:question.qNumber}} className="btn btn-primary">Solve</Link></td>
         </tr>
-      )
+      );
     });
 
     return (
