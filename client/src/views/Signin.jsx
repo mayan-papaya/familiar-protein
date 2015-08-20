@@ -9,11 +9,13 @@ var Signin = React.createClass({
   signin: function(user){
     $.ajax({
       url: window.location.origin + '/signin', // signin route
-      method: 'POST',
-      dataType: 'json',
-      data: user, // data is user
-      success: function(data){
-        console.log(data);
+      type: 'POST',
+      data: JSON.stringify(user), // data is user
+      contentType: 'application/json',
+      success: function(token){
+        window.localStorage.setItem('com.TearsOfTheAncients', token);
+        window.localStorage.setItem('com.TearsOfTheAncients.username', user.username);
+        console.log('THIS IS IT', window.localStorage.getItem('com.TearsOfTheAncients'));
       }.bind(this),
       error: function(xhr, status, err){
         console.error(xhr, status, err.message);

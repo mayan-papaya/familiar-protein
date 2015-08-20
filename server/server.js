@@ -1,6 +1,7 @@
 var express = require('express');
 var middleware = require('./config/middleware');
 require('./config/db');
+// var bcrypt = require('bcrypt-nodejs');
 
 var port = process.env.PORT || 3000;
 

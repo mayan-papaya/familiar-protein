@@ -7,14 +7,13 @@ var Link = Router.Link;
 var Signup = React.createClass({
 
   signup: function(user){
-    console.log('This should be a user obj:', user);
     $.ajax({
       url: window.location.origin + '/signup', //signup route
-      method: 'POST',
-      dataType: 'json',
+      type: 'POST',
       data: JSON.stringify(user), //data is stringified user obj
+      contentType: 'application/json',
       success: function(data){
-        console.log(data);
+
       }.bind(this),
       error: function(xhr, status, err){
         console.error(xhr, status, err.message);

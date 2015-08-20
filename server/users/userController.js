@@ -26,17 +26,19 @@ module.exports = {
   signin: function (req, res) {
     var username = req.body.username,
         password = req.body.password;
+    console.log('REQ.BODY HERE', req.body);
 
     var findUser = Q.nbind(User.findOne, User);
     findUser({username: username})
       .then(function (user) {
-        console.log(user);
+        console.log('USER IS HERE', user);
         if (!user) {
           res.statusCode = 403;
           res.json({error: 'Incorrect username or password'});
         } else {
           user.comparePasswords(password)
             .then(function(foundUser) {
+              console.log('FOUND USER!', foundUser);
               if (foundUser) {
                 var token = jwt.encode(user, secret);
                 res.json({token: token});
@@ -58,7 +60,6 @@ module.exports = {
         password  = req.body.password,
         create,
         newUser;
-        console.log('++++++++++', req); // req.body is empty
     var findOne = Q.nbind(User.findOne, User);
     // check to see if user already exists
     findOne({username: username})
