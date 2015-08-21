@@ -25,7 +25,7 @@ module.exports = function(config) {
       'client/build/app.js',
 
       // test files
-      // 'server/tests/*.js'
+      'test/*.js'
     ],
 
 
