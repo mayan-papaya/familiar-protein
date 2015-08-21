@@ -30,10 +30,13 @@ module.exports = {
     var findUser = Q.nbind(User.findOne, User);
     findUser({username: username})
       .then(function(user){
+        var answered = false;
+        var index = 0;
+
         for(var i = 0; i < user.questions.length; i++){
           if(user.questions[i].title === question.title) {
-            var answered = true;
-            var index = i;
+            answered = true;
+            index = i;
           }
         }
 
