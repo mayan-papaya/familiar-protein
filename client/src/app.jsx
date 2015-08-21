@@ -43,22 +43,25 @@ var App = React.createClass({
   },
 
   getUser: function(){
-    var user = {
-      username: window.localStorage.getItem('com.TearsOfTheAncients.username')
+    var user = {username: window.localStorage.getItem('com.TearsOfTheAncients.username') || null};
+    // console.log(user);
+    if(user.username === null) {
+      console.log('user is not logged in');
+      this.setState({profile: null});
+    } else {
+      $.ajax({
+        url: window.location.origin + '/profile',
+        type: 'POST',
+        data: JSON.stringify(user),
+        contentType: 'application/json',
+        success: function(data){
+          this.setState({profile: JSON.parse(data)});
+        }.bind(this),
+        error: function(xhr, status, err){
+          console.error(xhr, status, err.message);
+        }
+      });
     }
-    console.log(user);
-    $.ajax({
-      url: window.location.origin + '/profile',
-      type: 'POST',
-      data: JSON.stringify(user),
-      contentType: 'application/json',
-      success: function(data){
-        this.setState({profile: JSON.parse(data)});
-      }.bind(this),
-      error: function(xhr, status, err){
-        console.error(xhr, status, err.message);
-      }
-    });
   },
 
   componentDidMount: function(){
