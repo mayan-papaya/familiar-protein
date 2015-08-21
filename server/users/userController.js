@@ -22,6 +22,52 @@ module.exports = {
   },
 
 
+  updateUser: function(req, res){
+    var username = req.body.username;
+    var question = req.body.question;
+    var highestScore;
+    console.log(';asdf', question);
+    var query = {username: username};
+    var findUser = Q.nbind(User.findOne, User);
+    findUser({username: username})
+      .then(function(user){
+        for(var i = 0; i < user.questions.length; i++){
+          if(user.questions[i].title === question.title) {
+            var answered = true;
+            var index = i;
+          }
+        }
+
+        highestScore = user.highestScore;
+        if(highestScore.score < question.score){
+          highestScore = question;
+        }
+        
+        if(answered){
+          if(question.score > user.questions[index].score){
+            User.findOneAndUpdate(query, {$pull: {questions: user.questions[index]}}, {safe: true, upsert: true}, function(err, model){
+              console.log(err);
+            });
+            User.findOneAndUpdate(query, {$push: {questions: question}}, {safe: true, upsert: true}, function(err, model){
+              console.log(err);
+            });
+            User.findOneAndUpdate(query, {highestScore: highestScore}, {safe: true, upsert: true}, function(err, model){
+              console.log(err);
+            });
+          }
+        }else{
+          User.findOneAndUpdate(query, {$push: {questions: question}}, {safe: true, upsert: true}, function(err, model){
+            console.log(err);
+          });
+          User.findOneAndUpdate(query, {highestScore: highestScore}, {safe: true, upsert: true}, function(err, model){
+            console.log(err);
+          });
+        }
+
+      });
+  },
+
+
   // gets all questions from the database
   getAll: function(req, res) {
     var findUsers = Q.nbind(User.find, User);
