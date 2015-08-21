@@ -3,9 +3,13 @@ var React = require('react');
 var Router = require('react-router');
 var Link = Router.Link;
 
+var Signout = require('./Signout.jsx');
+
 var ProfileView = React.createClass({
 
   render: function() {
+    console.log(this);
+    console.log(Signout);
     var questions = this.props.profile.questions.map(function(question) {
       return (
         <tr className="question">
@@ -25,6 +29,7 @@ var ProfileView = React.createClass({
               <div className="row">
                 <div className="profile-user-info col-md-8 text-left">
                   <h2 className="profile-user-header">{this.props.profile.username}</h2>
+                  <Signout />
                   <br></br>
                   <br></br>
                   <div className="row">

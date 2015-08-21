@@ -36,12 +36,6 @@ var Leaderboard = React.createClass({
           <td className="col-md-2"><a className="btn btn-sm btn-primary pull-right">Follow</a></td>
         </tr>
 
-        // example
-        // <tr key={question.qNumber} className="question">
-        //   <td><b>{question.title}</b></td>
-        //   <td><p>{question.description}</p></td>
-        //   <td><Link to="question" params={{qNumber:question.qNumber}} className="btn btn-primary">Solve</Link></td>
-        // </tr>
       );
     });
 
