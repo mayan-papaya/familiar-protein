@@ -80,10 +80,9 @@ var App = React.createClass({
       <div className="container">
 
         <div className="text-right">
+          <SignInNav />
           <ProfileNav />
           <ProblemsNav />
-          <SignInNav />
-          <SignOut />
         </div>
 
         <h2 className="title">Regex Quest 2: Tears of the Ancients</h2>

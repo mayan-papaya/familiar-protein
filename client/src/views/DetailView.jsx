@@ -181,7 +181,8 @@ var DetailView = React.createClass({
           <span className="solution">
             <span>/</span>
             <input ref="solutionText"
-              onChange={this.setRegex} rows="1" cols="50" type="text"
+              onChange={this.setRegex}
+              type="text"
               className="regex form-control"
               placeholder="Regex solution..."/>
             <span>/</span>
