@@ -10,6 +10,7 @@ var Signin = require('./views/Signin.jsx');
 var Signup = require('./views/Signup.jsx');
 var Signout = require('./views/Signout.jsx');
 var ProfileView = require('./views/ProfileView.jsx')
+var UsersView = require('./views/UsersView.jsx')
 var Leaderboard = require('./views/Leaderboard.jsx')
 
 var Router = require('react-router');
@@ -101,6 +102,7 @@ var routes = (
     <Route name="signin" handler={Signin} />
     <Route name="signup" handler={Signup} />
     <Route name="profileView" handler={ProfileView} />
+    <Route name="usersView" handler={UsersView} />
     <DefaultRoute name="default" handler={OverView} />
   </Route>
 );
