@@ -1,5 +1,5 @@
 var React = require('react');
-
+var $ = require('jquery');
 var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
@@ -72,6 +72,32 @@ var DetailView = React.createClass({
     </div>;
   },
 
+  updateUser: function(score){
+    var question = this.props.questions[this.props.params.qNumber - 1]
+    data = {
+      username: window.localStorage.getItem('com.TearsOfTheAncients.username'),
+      question: {
+        title: question.title,
+        score: score,
+        time: this.calculateTime(),
+        answer: this.state.result
+      }
+    }
+    console.log('asdf')
+    $.ajax({
+      url: window.location.origin + '/endGame',
+      type: 'POST',
+      data: JSON.stringify(data),
+      contentType: 'application/json',
+      success: function(data){
+        console.log('data', data);
+      }.bind(this),
+      error: function(xhr, status, err){
+        console.error(xhr, status, err.message);
+      }
+    });
+  },
+
   calculateScore: function() {
     var sec = Math.floor((this.state.now - this.state.started) / 1000);
     var strLength = this.state.result.length;
@@ -79,6 +105,7 @@ var DetailView = React.createClass({
     if(score < 0) {
       score = 0;
     }
+    this.updateUser(score);
     return score;
   },
 

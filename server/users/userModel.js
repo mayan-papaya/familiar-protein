@@ -8,8 +8,11 @@ var UserSchema = new mongoose.Schema({
   password: String,
   highestScore: {
     title: String,
-    score: Number,
-    time: Number,
+    score: {
+      type: Number,
+      default: 0
+    },
+    time: String,
     answer: String,
   },
   followers: [String],
@@ -17,7 +20,7 @@ var UserSchema = new mongoose.Schema({
   questions: [{
     title: String,
     score: Number,
-    time: Number,
+    time: String,
     answer: String,
   }]
 

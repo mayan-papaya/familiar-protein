@@ -31,17 +31,37 @@ module.exports = {
     var findUser = Q.nbind(User.findOne, User);
     findUser({username: username})
       .then(function(user){
+        for(var i = 0; i < user.questions.length; i++){
+          if(user.questions[i].title === question.title) {
+            var answered = true;
+            var index = i;
+          }
+        }
+        if(answered){
+          if(question.score > user.questions[index].score){
+            User.findOneAndUpdate(query, {$pull: {questions: user.questions[index]}}, {safe: true, upsert: true}, function(err, model){
+              console.log(err);
+            });
+            User.findOneAndUpdate(query, {$push: {questions: question}}, {safe: true, upsert: true}, function(err, model){
+              console.log(err);
+            });
+            User.findOneAndUpdate(query, {highestScore: highestScore}, {safe: true, upsert: true}, function(err, model){
+              console.log(err);
+            });
+          }
+        }else{
+          User.findOneAndUpdate(query, {$push: {questions: question}}, {safe: true, upsert: true}, function(err, model){
+            console.log(err);
+          });
+          User.findOneAndUpdate(query, {highestScore: highestScore}, {safe: true, upsert: true}, function(err, model){
+            console.log(err);
+          });
+        }
+
         highestScore = user.highestScore;
         if(highestScore.score < question.score){
           highestScore = question;
         }
-      }).then(function(){
-        User.findOneAndUpdate(query, {$push: {questions: question}}, {safe: true, upsert: true}, function(err, model){
-          console.log(err);
-        });
-        User.findOneAndUpdate(query, {highestScore: highestScore}, {safe: true, upsert: true}, function(err, model){
-          console.log(err);
-        });
       });
   },
 
