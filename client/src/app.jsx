@@ -8,10 +8,14 @@ var OverView = require('./views/Overview.jsx');
 var DetailView = require('./views/DetailView.jsx');
 var Signin = require('./views/Signin.jsx');
 var Signup = require('./views/Signup.jsx');
-var SignOut = require('./components/SignOut.jsx');
 var ProfileView = require('./views/ProfileView.jsx')
 var UsersView = require('./views/UsersView.jsx')
 var Leaderboard = require('./views/Leaderboard.jsx')
+
+var SignOut = require('./components/SignOut.jsx');
+var ProfileNav = require('./components/ProfileNav.jsx');
+var SignInNav = require('./components/SignInNav.jsx');
+var ProblemsNav = require('./components/ProblemsNav.jsx');
 
 var Router = require('react-router');
 var RouteHandler = Router.RouteHandler;
@@ -75,19 +79,10 @@ var App = React.createClass({
     return (
       <div className="container">
 
-        <div className="row">
-          <div className="col-md-2 col-md-offset-10 text-right">
-            <Link to="profileView">Profile</Link>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col-md-2 col-md-offset-10 text-right">
-            <Link to="default">Problems</Link>
-          </div>
-        </div>
-
         <div className="text-right">
+          <ProfileNav />
+          <ProblemsNav />
+          <SignInNav />
           <SignOut />
         </div>
 
