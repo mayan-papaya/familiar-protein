@@ -8,7 +8,7 @@ var OverView = require('./views/Overview.jsx');
 var DetailView = require('./views/DetailView.jsx');
 var Signin = require('./views/Signin.jsx');
 var Signup = require('./views/Signup.jsx');
-var Signout = require('./views/Signout.jsx');
+var SignOut = require('./components/SignOut.jsx');
 var ProfileView = require('./views/ProfileView.jsx')
 var UsersView = require('./views/UsersView.jsx')
 var Leaderboard = require('./views/Leaderboard.jsx')
@@ -85,6 +85,10 @@ var App = React.createClass({
           <div className="col-md-2 col-md-offset-10 text-right">
             <Link to="default">Problems</Link>
           </div>
+        </div>
+
+        <div className="text-right">
+          <SignOut />
         </div>
 
         <h2 className="title">Regex Quest 2: Tears of the Ancients</h2>

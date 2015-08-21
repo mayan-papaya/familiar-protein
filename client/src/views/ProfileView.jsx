@@ -4,7 +4,7 @@ var $ = require('jquery');
 var Router = require('react-router');
 var Link = Router.Link;
 
-var Signout = require('./Signout.jsx');
+var Signout = require('../components/SignOut.jsx');
 
 
 var ProfileView = React.createClass({
