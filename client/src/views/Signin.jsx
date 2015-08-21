@@ -1,10 +1,11 @@
 var React = require('react');
 var $ = require('jquery');
-
 var Router = require('react-router');
+var Navigation = Router.Navigation;
 var Link = Router.Link;
 
 var Signin = React.createClass({
+  mixins: [Navigation],
 
   signin: function(user){
     $.ajax({
@@ -30,6 +31,7 @@ var Signin = React.createClass({
       password: password
     }
     this.signin(user);
+    this.transitionTo('/');
   },
 
   render: function() {
