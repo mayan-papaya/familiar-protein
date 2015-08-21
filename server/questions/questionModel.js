@@ -6,8 +6,8 @@ var QuestionSchema = new mongoose.Schema({
   title: String,
   description: String,
   leaderBoard: [{
-    name: String, 
-    solution: String, 
+    name: String,
+    solution: String,
     score: Number
   }],
   truthy: [String],
@@ -22,9 +22,9 @@ questions.forEach(function(element) {
   var newQ = new Question(element);
   newQ.save(function(err, data) {
     if (err) {
-      console.log("Adding questions error: ", err);
+      // console.log("Adding questions error: ", err);
     } else {
-      console.log("Adding questions success: ", data);
+      // console.log("Adding questions success: ", data);
     }
   });
 });

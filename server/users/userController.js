@@ -1,6 +1,7 @@
 var User = require('./userModel.js'),
     Q    = require('q'),
-    jwt  = require('jwt-simple');
+    jwt  = require('jwt-simple'),
+    _ = require('underscore');
 
 var secret = 'shhhhh';
 
@@ -65,6 +66,22 @@ module.exports = {
       });
   },
 
+  addFollow: function(req, res) {
+    var username = req.body.user;
+    var toFollow = req.body.toFollow;
+    var query = {username: username};
+    var findUser = Q.nbind(User.findOne, User);
+    findUser({username: username})
+      .then(function(user){
+        console.log('the user: ================>', user);
+        if(!_.contains(user.following, toFollow)) {
+          User.findOneAndUpdate(query, {$push: {following: toFollow}}, {safe: true, upsert: true}, function(err, model){
+            console.log(err);
+          });
+        }
+      });
+  },
+
 
   // gets all questions from the database
   getAll: function(req, res) {
@@ -72,6 +89,7 @@ module.exports = {
 
     findUsers().then(function(users) {
       res.json(users.map(function(user) {
+        console.log(user);
         return {username: user.username};
       }));
     });
