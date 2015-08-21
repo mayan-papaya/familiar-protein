@@ -42,8 +42,8 @@ module.exports = {
           highestScore = question;
         }
 
-        if(answered){
-          if(question.score > user.questions[index].score){
+        if(answered) {
+          if(question.score > user.questions[index].score) {
             User.findOneAndUpdate(query, {$pull: {questions: user.questions[index]}}, {safe: true, upsert: true}, function(err, model){
               console.log(err);
             });
@@ -54,7 +54,7 @@ module.exports = {
               console.log(err);
             });
           }
-        }else{
+        } else {
           User.findOneAndUpdate(query, {$push: {questions: question}}, {safe: true, upsert: true}, function(err, model){
             console.log(err);
           });
@@ -73,12 +73,14 @@ module.exports = {
     var findUser = Q.nbind(User.findOne, User);
     findUser({username: username})
       .then(function(user){
-        console.log('the user: ================>', user);
+        // console.log('the user: ================>', user);
         if(!_.contains(user.following, toFollow)) {
           User.findOneAndUpdate(query, {$push: {following: toFollow}}, {safe: true, upsert: true}, function(err, model){
             console.log(err);
           });
+          user.following.push(toFollow);
         }
+        res.json(JSON.stringify({following: user.following}));
       });
   },
 
