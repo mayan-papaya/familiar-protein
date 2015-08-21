@@ -7,6 +7,7 @@ var OverView = require('./views/Overview.jsx');
 var DetailView = require('./views/DetailView.jsx');
 var Signin = require('./views/Signin.jsx');
 var Signup = require('./views/Signup.jsx');
+var Signout = require('./views/Signout.jsx');
 var ProfileView = require('./views/ProfileView.jsx')
 var Leaderboard = require('./views/Leaderboard.jsx')
 
