@@ -1,6 +1,6 @@
 var React = require('react');
-
 var Router = require('react-router');
+var Follow = require('../components/Follow.jsx');
 var Link = Router.Link;
 
 var Leaderboard = React.createClass({
@@ -33,7 +33,7 @@ var Leaderboard = React.createClass({
           <td className="col-md-2">{leader.score}</td>
           <td className="col-md-2">{leader.completeTime}</td>
           <td className="col-md-2">{leader.solutionLength}</td>
-          <td className="col-md-2"><a className="btn btn-sm btn-primary pull-right">Follow</a></td>
+          <Follow following={leader.username}/>
         </tr>
 
       );
