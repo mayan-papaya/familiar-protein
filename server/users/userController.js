@@ -37,6 +37,12 @@ module.exports = {
             var index = i;
           }
         }
+
+        highestScore = user.highestScore;
+        if(highestScore.score < question.score){
+          highestScore = question;
+        }
+        
         if(answered){
           if(question.score > user.questions[index].score){
             User.findOneAndUpdate(query, {$pull: {questions: user.questions[index]}}, {safe: true, upsert: true}, function(err, model){
@@ -58,10 +64,6 @@ module.exports = {
           });
         }
 
-        highestScore = user.highestScore;
-        if(highestScore.score < question.score){
-          highestScore = question;
-        }
       });
   },
 
