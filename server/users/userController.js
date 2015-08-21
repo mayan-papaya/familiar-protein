@@ -22,6 +22,30 @@ module.exports = {
   },
 
 
+  updateUser: function(req, res){
+    var username = req.body.username;
+    var question = req.body.question;
+    var highestScore;
+    console.log(';asdf', question);
+    var query = {username: username};
+    var findUser = Q.nbind(User.findOne, User);
+    findUser({username: username})
+      .then(function(user){
+        highestScore = user.highestScore;
+        if(highestScore.score < question.score){
+          highestScore = question;
+        }
+      }).then(function(){
+        User.findOneAndUpdate(query, {$push: {questions: question}}, {safe: true, upsert: true}, function(err, model){
+          console.log(err);
+        });
+        User.findOneAndUpdate(query, {highestScore: highestScore}, {safe: true, upsert: true}, function(err, model){
+          console.log(err);
+        });
+      });
+  },
+
+
   // gets all questions from the database
   getAll: function(req, res) {
     var findUsers = Q.nbind(User.find, User);

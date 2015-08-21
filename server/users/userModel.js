@@ -9,6 +9,7 @@ var UserSchema = new mongoose.Schema({
   highestScore: {
     title: String,
     score: Number,
+    time: Number,
     answer: String,
   },
   followers: [String],
