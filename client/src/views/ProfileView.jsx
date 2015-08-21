@@ -47,14 +47,17 @@ var ProfileView = React.createClass({
   },
 
   render: function() {
+
     var questions = this.state.profile.questions.map(function(question) {
       return (
-        <tr className="question">
-          <td><b>{question.title}</b></td>
-          <td><p>{question.score}</p></td>
-          <td><p>{question.time}</p></td>
-          <td><p>{question.answer}</p></td>
-        </tr>
+        <div>
+        <table className="question">
+          <tr><b>{question.title}</b></tr>
+          <tr><p>Score: {question.score}</p></tr>
+          <tr><p>Time: {question.time}</p></tr>
+          <tr><p>Answer: {question.answer}</p></tr>
+        </table>
+        </div>
       )
     });
 
@@ -70,10 +73,20 @@ var ProfileView = React.createClass({
                   <br></br>
                   <br></br>
                   <div className="row">
-                    <div className="col-md-11">
+                    <div>
                       <table className="profile-user-table table table-hover">
                         <tr>
-                          <td>Highest Score:</td><td>{this.state.profile.highestScore}</td>
+                          <td>Highest Score:</td>
+                          <td>
+                          <div>
+                          <table className="question">
+                            <tr><b>{this.state.profile.highestScore.title}</b></tr>
+                            <tr><p>Score: {this.state.profile.highestScore.score}</p></tr>
+                            <tr><p>Time: {this.state.profile.highestScore.time}</p></tr>
+                            <tr><p>Answer: {this.state.profile.highestScore.answer}</p></tr>
+                          </table>
+                          </div>
+                          </td>
                         </tr>
                         <tr>
                           <td>Questions Answered:</td><td>{questions}</td>
