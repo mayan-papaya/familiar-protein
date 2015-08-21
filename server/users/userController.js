@@ -22,6 +22,18 @@ module.exports = {
   },
 
 
+  // gets all questions from the database
+  getAll: function(req, res) {
+    var findUsers = Q.nbind(User.find, User);
+
+    findUsers().then(function(users) {
+      res.json(users.map(function(user) {
+        return {username: user.username};
+      }));
+    });
+  },
+
+
 
   signin: function (req, res) {
     var username = req.body.username,
