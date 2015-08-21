@@ -1,5 +1,6 @@
 var React = require('react');
 
+require('expose?$!expose?jQuery!jquery');
 var $ = require('jquery');
 require('bootstrap-webpack');
 
